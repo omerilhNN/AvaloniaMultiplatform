@@ -141,7 +141,7 @@ namespace AvaloniaMultiplatform.ViewModels
         
         public void RaiseCanExecuteChanged()
         {
-            //Canasdasd
+            
             CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
