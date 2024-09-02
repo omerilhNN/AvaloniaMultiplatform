@@ -4,22 +4,34 @@ using System.Windows.Input;
 
 namespace AvaloniaMultiplatform.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged // Viewdaki datada bir değişiklik olunca ViewModel ile bunu View'a bildirmek için bu interface //PropertyChangedEventHandler
+    public class MainViewModel : INotifyPropertyChanged
     {
         private string? _input1;
         private string? _input2;
         private string? _result;
+        public ICommand AddCommand { get; }
+        public ICommand SubtractCommand { get; }
+        public ICommand DivideCommand { get; }
+        public ICommand MultiplyCommand { get; }
+
+        public MainViewModel()
+        {
+            AddCommand = new RelayCommand(OnAddButtonClick, CanExecuteCalculation);
+            SubtractCommand = new RelayCommand(OnSubtractButtonClick, CanExecuteCalculation);
+            DivideCommand = new RelayCommand(OnDivideButtonClick, CanExecuteCalculation);
+            MultiplyCommand = new RelayCommand(OnMultiplyButtonClick, CanExecuteCalculation);
+        }
 
         public string Input1
         {
             get => _input1;
             set
             {
-                //value is a NEW VALUE that you want to set instead _input1
                 if (_input1 != value)
                 {
                     _input1 = value;
                     OnPropertyChanged(nameof(Input1));
+                    OnCanExecuteChanged(); // Notify that CanExecute might have changed
                 }
             }
         }
@@ -33,6 +45,7 @@ namespace AvaloniaMultiplatform.ViewModels
                 {
                     _input2 = value;
                     OnPropertyChanged(nameof(Input2));
+                    OnCanExecuteChanged(); // Notify that CanExecute might have changed
                 }
             }
         }
@@ -50,18 +63,11 @@ namespace AvaloniaMultiplatform.ViewModels
             }
         }
 
-        public ICommand AddCommand { get; }
-        public ICommand SubstractCommand { get; }
-        public ICommand DivideCommand { get; }
-        public ICommand MultiplyCommand { get; }
-
-
-        public MainViewModel()
+    
+        private bool CanExecuteCalculation()
         {
-            AddCommand = new RelayCommand(OnAddButtonClick);
-            SubstractCommand = new RelayCommand(OnSubstractButtonClick);
-            DivideCommand = new RelayCommand(OnDivideButtonClick);
-            MultiplyCommand = new RelayCommand(OnMultiplyButtonClick);
+            // Ensure that both inputs are valid numbers
+            return double.TryParse(Input1, out _) && double.TryParse(Input2, out _);
         }
 
         private void OnAddButtonClick()
@@ -70,33 +76,24 @@ namespace AvaloniaMultiplatform.ViewModels
             {
                 Result = $"Result: {num1 + num2}";
             }
-            else
-            {
-                Result = "Please enter valid numbers.";
-            }
         }
-        private void OnSubstractButtonClick()
+
+        private void OnSubtractButtonClick()
         {
             if (double.TryParse(Input1, out double num1) && double.TryParse(Input2, out double num2))
             {
                 Result = $"Result: {num1 - num2}";
             }
-            else
-            {
-                Result = "Please enter valid numbers.";
-            }
         }
+
         private void OnMultiplyButtonClick()
         {
             if (double.TryParse(Input1, out double num1) && double.TryParse(Input2, out double num2))
             {
                 Result = $"Result: {num1 * num2}";
             }
-            else
-            {
-                Result = "Please enter valid numbers.";
-            }
         }
+
         private void OnDivideButtonClick()
         {
             if (double.TryParse(Input1, out double num1) && double.TryParse(Input2, out double num2))
@@ -104,19 +101,24 @@ namespace AvaloniaMultiplatform.ViewModels
                 if (num2 != 0)
                     Result = $"Result: {num1 / num2}";
                 else
-                    Result = "Divide by Zero error";
-            }
-            else
-            {
-                Result = "Please enter valid numbers.";
+                    Result = "Cannot divide by zero";
             }
         }
-        //ViewModel'daki data değiştiğinde hemen güncelleyip View'a yansıtmaya yarayan kod.
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        // Notify the commands that their CanExecute state might have changed
+        private void OnCanExecuteChanged()
+        {
+            (AddCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            (SubtractCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            (DivideCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            (MultiplyCommand as RelayCommand)?.RaiseCanExecuteChanged();
         }
     }
 
@@ -136,5 +138,10 @@ namespace AvaloniaMultiplatform.ViewModels
         public void Execute(object? parameter) => _execute();
 
         public event EventHandler CanExecuteChanged;
+        
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

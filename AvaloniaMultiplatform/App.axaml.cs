@@ -17,24 +17,11 @@ namespace AvaloniaMultiplatform
 
         public override void OnFrameworkInitializationCompleted()
         {
+            BindingPlugins.DataValidators.RemoveAt(0);
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-            {
-                // Line below is needed to remove Avalonia data validation.
-                // Without this line you will get duplicate validations from both Avalonia and CT
-                BindingPlugins.DataValidators.RemoveAt(0);
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = new MainViewModel()
-                };
-            }
-            else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-            {
-                singleViewPlatform.MainView = new MainView
-                {
-                    DataContext = new MainViewModel()
-                };
-            }
-
+                desktop.MainWindow = new MainWindow();
+            else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
+                singleView.MainView = new MainSingleView();
             base.OnFrameworkInitializationCompleted();
         }
     }

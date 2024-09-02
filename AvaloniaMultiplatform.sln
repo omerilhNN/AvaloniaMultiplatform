@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMultiplatform", "AvaloniaMultiplatform\AvaloniaMultiplatform.csproj", "{1C29BE87-0A4A-4388-B85D-D0AB5A93B687}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMultiplatform", "AvaloniaMultiplatform\AvaloniaMultiplatform.csproj", "{1C29BE87-0A4A-4388-B85D-D0AB5A93B687}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMultiplatform.Android", "AvaloniaMultiplatform.Android\AvaloniaMultiplatform.Android.csproj", "{6D1DC411-F2B1-494E-B3B8-A8DDCF79617A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMultiplatform.Android", "AvaloniaMultiplatform.Android\AvaloniaMultiplatform.Android.csproj", "{6D1DC411-F2B1-494E-B3B8-A8DDCF79617A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMultiplatform.Desktop", "AvaloniaMultiplatform.Desktop\AvaloniaMultiplatform.Desktop.csproj", "{A2DACA54-FBF7-452C-B2D4-82853C9D10AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMultiplatformDesktop", "AvaloniaMultiplatform.Desktop\AvaloniaMultiplatformDesktop.csproj", "{A2DACA54-FBF7-452C-B2D4-82853C9D10AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMultiplatform.iOS", "AvaloniaMultiplatform.iOS\AvaloniaMultiplatform.iOS.csproj", "{38EE3607-FC01-4957-8307-EDA8232F7389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMultiplatform.iOS", "AvaloniaMultiplatform.iOS\AvaloniaMultiplatform.iOS.csproj", "{38EE3607-FC01-4957-8307-EDA8232F7389}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaMultiplatform.Browser", "AvaloniaMultiplatform.Browser\AvaloniaMultiplatform.Browser.csproj", "{D7EA6713-14DB-4FD8-805D-6F336FB6DBE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaMultiplatform.Browser", "AvaloniaMultiplatform.Browser\AvaloniaMultiplatform.Browser.csproj", "{D7EA6713-14DB-4FD8-805D-6F336FB6DBE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
