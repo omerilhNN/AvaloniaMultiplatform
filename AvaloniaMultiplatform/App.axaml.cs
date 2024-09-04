@@ -17,7 +17,10 @@ namespace AvaloniaMultiplatform
 
         public override void OnFrameworkInitializationCompleted()
         {
-            BindingPlugins.DataValidators.RemoveAt(0);
+            if (BindingPlugins.DataValidators.Count > 0)
+            {
+                BindingPlugins.DataValidators.RemoveAt(0);
+            }
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
                 desktop.MainWindow = new MainWindow();
             else if (ApplicationLifetime is ISingleViewApplicationLifetime singleView)
