@@ -1,6 +1,6 @@
-﻿using Avalonia.Headless;
-using Avalonia;
+﻿using Avalonia;
 using AvaloniaMultiplatform;
+using Avalonia.Headless;
 
 [assembly: AvaloniaTestApplication(typeof(TestAppBuilder))]
 public class TestAppBuilder

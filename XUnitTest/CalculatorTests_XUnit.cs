@@ -3,7 +3,7 @@ using AvaloniaMultiplatform.ViewModels;
 
 namespace AvaloniaMultiplatform.XUnitTest
 {
-    public class CalculatorTests
+    public class CalculatorTests_XUnit
     {
         [AvaloniaFact]
         public void AddCommand_ShouldReturnCorrectSum()

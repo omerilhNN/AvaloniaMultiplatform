@@ -12,10 +12,10 @@
 		<TextBox x:Name="Input1" Width="200" Watermark="Enter first number" Text="{Binding Input1, UpdateSourceTrigger=PropertyChanged}" />
 		<TextBox x:Name="Input2" Width="200" Watermark="Enter second number" Text="{Binding Input2, UpdateSourceTrigger=PropertyChanged}" />
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
-			<Button Content="+" Width="35" Command="{Binding AddCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
-			<Button Content="-" Width="35" Command="{Binding SubtractCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-			<Button Content="*" Width="35" Command="{Binding MultiplyCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-			<Button Content="/"  Width="35" Command="{Binding DivideCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+			<Button x:Name="AddButton" Content="+" Width="35" Command="{Binding AddCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+			<Button x:Name="SubtractButton" Content="-" Width="35" Command="{Binding SubtractCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+			<Button x:Name="MultiplyButton" Content="*" Width="35" Command="{Binding MultiplyCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+			<Button x:Name="DivideButton" Content="/"  Width="35" Command="{Binding DivideCommand}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 		</StackPanel>
 		
 
